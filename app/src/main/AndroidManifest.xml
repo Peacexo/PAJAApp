@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Sunrise app page-->
+        <activity android:name=".SunriseSunsetActivity" />
     </application>
 
 </manifest>
