@@ -2,9 +2,12 @@ package algonquin.cst2335.pajaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void openDictionaryApp(View view) {
+        startActivity(new Intent(this,DictionaryMain.class));
     }
 }
