@@ -3,6 +3,12 @@
     <style name="Base.Theme.PAJAApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/my_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/my_secondary</item>
+
     </style>
 
     <style name="Theme.PAJAApp" parent="Base.Theme.PAJAApp" />
