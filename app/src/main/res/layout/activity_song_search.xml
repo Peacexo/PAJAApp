@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".song_search_activity">
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".SongSearchActivity">
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:text="@string/title"
+    android:textAlignment="center"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/search_text"
+        />
+<!--    <SearchView-->
+<!--        android:id="@+id/search_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:queryHint="@string/search_hint_text"-->
+<!--        android:labelFor="@string/search_hint_text"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        android:background="@drawable/search_view_bg"-->
+<!--        />-->
+    <EditText
+        android:id="@+id/search_editText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:hint="@string/search_hint_text"
+        android:background="@drawable/search_view_bg"
+        android:textAlignment="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="SEARCH"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/results"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text=""
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
