@@ -23,6 +23,12 @@
         </activity>
         <!--Sunrise app page-->
         <activity android:name=".SunriseSunsetActivity" />
+
+    <!--Recipe Search app page-->
+        <activity
+            android:name=".RecipeHomeActivity"/>
+
+
     </application>
 
 </manifest>
