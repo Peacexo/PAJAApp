@@ -16,10 +16,10 @@
             android:name=".SongSearchResults"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SongSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".SongSearchActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

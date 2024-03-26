@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongSearchActivity extends AppCompatActivity {
+public class SongSearchActivity extends AppCompatActivity implements IRecyclerView {
 
     private RecyclerView favoriteList;
     private RequestQueue requestQueue;
@@ -34,6 +32,7 @@ public class SongSearchActivity extends AppCompatActivity {
     private Button searchButton;
     private String artistName;
     private List<Artist> artistList;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,7 @@ public class SongSearchActivity extends AppCompatActivity {
         favoriteList.setLayoutManager(new LinearLayoutManager(this));
         search = findViewById(R.id.search_editText);
         searchButton = findViewById(R.id.search_button);
-
+        textView = findViewById(R.id.results);
         search.clearFocus();
 
         requestQueue = VolleySingleton.getInstance(this).getRequestQueue();
@@ -54,10 +53,16 @@ public class SongSearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(click-> {
 
                 artistName = search.getText().toString().trim();
-                artistList = new ArrayList<>();
-                fetchArtist();
-            TextView textView = findViewById(R.id.results);
-            textView.setText("RESULTS");
+                textView.setText("");
+                if(artistName.isEmpty() || artistName.isBlank() ){
+                    Toast.makeText(SongSearchActivity.this, "Insert an artist to search!", Toast.LENGTH_SHORT)
+                            .show();
+                   //Reset RecycleView
+                } else {
+                    artistList = new ArrayList<>();
+                    fetchArtist();
+                    textView.setText("RESULTS"); // Change NO HARD CODE!!!
+                }
 
         });
 
@@ -77,13 +82,13 @@ public class SongSearchActivity extends AppCompatActivity {
                         JSONObject jsonObject = items.getJSONObject(i);
                         String name = jsonObject.getString("name");
                         String picture = jsonObject.getString("picture");
-
-                        Artist artist = new Artist(name, picture);
+                        String tracklist = jsonObject.getString("tracklist");
+                        Artist artist = new Artist(name, picture, tracklist);
                         artistList.add(artist);
                     }
 
                     // Move adapter creation and setting outside the loop
-                    ArtistAdapter adapter = new ArtistAdapter(SongSearchActivity.this, artistList);
+                    Adapter adapter = new Adapter(SongSearchActivity.this, artistList, SongSearchActivity.this);
                     favoriteList.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -101,4 +106,13 @@ public class SongSearchActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(SongSearchActivity.this, SongSearchResults.class);
+
+        intent.putExtra("artistName", artistList.get(position).getName());
+        intent.putExtra("artistPoster", artistList.get(position).getPoster());
+        intent.putExtra("artistTracklist", artistList.get(position).getTracklist());
+        startActivity(intent);
+    }
 }

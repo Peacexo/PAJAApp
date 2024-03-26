@@ -1,10 +1,12 @@
 package algonquin.cst2335.pajaapp;
 public class Artist {
 
-    private String name, poster;
-    public Artist(String name, String poster){
+    private String name, poster, tracklist;
+    public Artist(String name, String poster, String tracklist){
         this.name = name;
         this.poster = poster;
+        this.tracklist = tracklist;
+
     }
 
     public String getName() {
@@ -17,6 +19,14 @@ public class Artist {
 
     public String getPoster() {
         return poster;
+    }
+
+    public String getTracklist() {
+        return tracklist;
+    }
+
+    public void setTracklist(String tracklist) {
+        this.tracklist = tracklist;
     }
 
     public void setPoster(String poster) {

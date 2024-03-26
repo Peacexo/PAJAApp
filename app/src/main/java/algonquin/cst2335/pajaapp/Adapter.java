@@ -14,18 +14,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ArtistHolder> {
     private Context context;
     private List<Artist> artistList;
-    public ArtistAdapter(Context context, List<Artist> artistList){
+    private final IRecyclerView recyclerViewinterface;
+    public Adapter(Context context, List<Artist> artistList, IRecyclerView iRecyclerView){
         this.context = context;
         this.artistList = artistList;
+        recyclerViewinterface = iRecyclerView;
     }
     @NonNull
     @Override
     public ArtistHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.song_search_item,parent, false);
-        return new ArtistHolder(view);
+        return new ArtistHolder(view, recyclerViewinterface);
     }
 
     @Override
@@ -44,10 +46,21 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistHold
 
     ImageView imageView;
     TextView artist_name;
-            public ArtistHolder(@NonNull View itemView) {
+            public  ArtistHolder(@NonNull View itemView, IRecyclerView recyclerViewInterface) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artist_name = itemView.findViewById(R.id.artist_name);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewinterface !=null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            recyclerViewinterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
