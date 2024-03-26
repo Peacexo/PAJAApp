@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DictionaryMain"/>
+            android:name=".DictionaryMain"
+            android:exported= "true">
+        </activity>
+
     </application>
 
 </manifest>

@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
     public void openDictionaryApp(View view) {
         startActivity(new Intent(this,DictionaryMain.class));
     }

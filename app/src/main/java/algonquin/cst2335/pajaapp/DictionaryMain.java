@@ -2,7 +2,6 @@ package algonquin.cst2335.pajaapp;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DictionaryMain extends AppCompatActivity {

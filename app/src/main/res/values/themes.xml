@@ -8,6 +8,8 @@
         <item name="colorPrimary">@color/my_primary</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/my_secondary</item>
+        <item name="android:textColor">@color/my_text</item>
+        <item name="colorTertiary">@color/my_tertiary</item>
 
     </style>
 
