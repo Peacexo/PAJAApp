@@ -20,10 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DictionaryMain"
-            android:exported= "true">
-        </activity>
+         <!-- Dictionary app page -->
+        <activity android:name=".DictionaryMain" />
+        <!-- Sunrise app page -->
+        <activity android:name=".SunriseSunsetActivity" />
+         <!-- Song search app page -->
+        <activity android:name=".SongSearchActivity"/>
 
     </application>
 

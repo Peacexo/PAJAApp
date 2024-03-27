@@ -17,7 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void openDictionaryApp(View view) {
         startActivity(new Intent(this,DictionaryMain.class));
+
+    public void openSunriseApp(View view) {
+        startActivity(new Intent(this,SunriseSunsetActivity.class));
+
     }
 }
