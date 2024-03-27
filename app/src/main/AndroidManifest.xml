@@ -6,9 +6,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_paja"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PAJAApp"
         tools:targetApi="31">
@@ -21,12 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Sunrise app page-->
+         <!-- Dictionary app page -->
+        <activity android:name=".DictionaryMain" />
+        <!-- Sunrise app page -->
         <activity android:name=".SunriseSunsetActivity" />
+
 
     <!--Recipe Search app page-->
         <activity
             android:name=".RecipeHomeActivity"/>
+
+
+         <!-- Song search app page -->
+        <activity android:name=".SongSearchActivity"/>
 
 
     </application>
