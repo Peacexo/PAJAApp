@@ -24,8 +24,16 @@
         <activity android:name=".DictionaryMain" />
         <!-- Sunrise app page -->
         <activity android:name=".SunriseSunsetActivity" />
+
+
+    <!--Recipe Search app page-->
+        <activity
+            android:name=".RecipeHomeActivity"/>
+
+
          <!-- Song search app page -->
         <activity android:name=".SongSearchActivity"/>
+
 
     </application>
 
